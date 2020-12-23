@@ -11,7 +11,8 @@ class MFInput:
             return y1
         if y1 < y2:
             return (x0 - x1) / (x2 - x1)
-        return (x2 - x0) / (x2 - x1)
+        else:
+            return (x2 - x0) / (x2 - x1)
 
     def getMi(self, x0):
 
@@ -42,7 +43,7 @@ class MFOutput:
                 sumX += x[i]
                 nb1 += 1
         self.mi = 0
-        self.vaue = sumX / nb1
+        self.value = sumX / nb1
 
 
 from enum import Enum, unique
@@ -51,24 +52,28 @@ class Logic(Enum):
     OR = 0
     AND = 1
 
+
 class Rule:
-    def __init__(self, input1, input2, input3, input4, input5, input6, output, logic):
+    def __init__(self, input1, input2, input3, input4, output, logic):
+
         self.inputArray = []
         self.inputArray.append(input1)
         self.inputArray.append(input2)
         self.inputArray.append(input3)
         self.inputArray.append(input4)
-        self.inputArray.append(input5)
-        self.inputArray.append(input6)
+        self.output = output
+
         if logic == Logic.OR:
             maxI = input1.mi
-            for i in range (1,6):
-                maxI = max(maxI, self.InputArray[i].mi)
-            self.mfOutput.mi = max(self.mfOutput.mi, maxI)
+
+            for i in range(1, 4):
+                maxI = max(maxI, self.inputArray[i].mi)
+            self.output.mi = max(self.output.mi, maxI)
         else:
             minI = input1.mi
-            for i in range(1, 6):
-                minI = min(minI, self.InputArray[i].mi)
-            self.mfOutput.mi = max(self.mfOutput.mi, minI)
+            for i in range(1, 4):
+                minI = min(minI, self.inputArray[i].mi)
+            self.output.mi = max(self.output.mi, minI)
+
 
 
