@@ -31,7 +31,7 @@ speed.append(Fuzzy.MFInput("Medium", [72, 77, 84, 90], [0, 1, 1, 0], sp))
 speed.append(Fuzzy.MFInput("High", [86, 90], [0, 1], sp))
 
 finishing = []
-finishing.append(Fuzzy.MFInput("Low", [60, 70], [1, 0], fi))
+finishing.append(Fuzzy.MFInput("Low", [60, 72], [1, 0], fi))
 finishing.append(Fuzzy.MFInput("Medium", [67, 72, 78, 83], [0, 1, 1, 0], fi))
 finishing.append(Fuzzy.MFInput("High", [80, 83], [0, 1], fi))
 
@@ -52,7 +52,7 @@ rules.append(Fuzzy.Rule(ballControl[2], dribbling[2], speed[1], finishing[2], ov
 
 rules.append(Fuzzy.Rule(ballControl[2], dribbling[2], speed[2], finishing[1], overall[4],  Fuzzy.Logic.AND))
 
-# Proffesional (2 high, 2 medium or 1 high, 3 medium)
+# Proffesional (2 high, 2 medium or 1 high, 3 medium or 2 high, 1 medium, 1 low)
 rules.append(Fuzzy.Rule(ballControl[1], dribbling[1], speed[2], finishing[2], overall[3],  Fuzzy.Logic.AND))
 rules.append(Fuzzy.Rule(ballControl[1], dribbling[2], speed[1], finishing[2], overall[3],  Fuzzy.Logic.AND))
 rules.append(Fuzzy.Rule(ballControl[1], dribbling[2], speed[2], finishing[1], overall[3],  Fuzzy.Logic.AND))
@@ -64,6 +64,20 @@ rules.append(Fuzzy.Rule(ballControl[2], dribbling[1], speed[1], finishing[1], ov
 rules.append(Fuzzy.Rule(ballControl[1], dribbling[2], speed[1], finishing[1], overall[3],  Fuzzy.Logic.AND))
 rules.append(Fuzzy.Rule(ballControl[1], dribbling[1], speed[2], finishing[1], overall[3],  Fuzzy.Logic.AND))
 rules.append(Fuzzy.Rule(ballControl[1], dribbling[1], speed[1], finishing[2], overall[3],  Fuzzy.Logic.AND))
+
+rules.append(Fuzzy.Rule(ballControl[2], dribbling[2], speed[1], finishing[0], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[2], dribbling[1], speed[2], finishing[0], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[2], dribbling[1], speed[0], finishing[2], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[2], dribbling[2], speed[0], finishing[1], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[2], dribbling[0], speed[2], finishing[1], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[2], dribbling[0], speed[1], finishing[2], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[0], dribbling[2], speed[1], finishing[2], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[0], dribbling[2], speed[2], finishing[1], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[1], dribbling[2], speed[0], finishing[2], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[1], dribbling[2], speed[2], finishing[0], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[0], dribbling[1], speed[2], finishing[2], overall[3],  Fuzzy.Logic.AND))
+rules.append(Fuzzy.Rule(ballControl[1], dribbling[0], speed[2], finishing[2], overall[3],  Fuzzy.Logic.AND))
+
 
 # Semi-pro (1 high, 1 low, 2 medium or 4 medium)
 rules.append(Fuzzy.Rule(ballControl[1], dribbling[1], speed[1], finishing[1], overall[2],  Fuzzy.Logic.AND))
