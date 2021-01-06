@@ -17,30 +17,30 @@ fi = int(input("Finishing: "))
 
 ballControl = []
 ballControl.append(Fuzzy.MFInput("Low", [60, 72], [1, 0], bc))
-ballControl.append(Fuzzy.MFInput("Medium", [70, 72, 78, 84], [0, 1, 1, 0], bc))
-ballControl.append(Fuzzy.MFInput("High", [80, 84], [0, 1], bc))
+ballControl.append(Fuzzy.MFInput("Medium",[60, 72, 78, 84], [0, 1, 1, 0], bc))
+ballControl.append(Fuzzy.MFInput("High", [78, 84], [0, 1], bc))
 
 dribbling = []
 dribbling.append(Fuzzy.MFInput("Low", [62, 73], [1, 0], dr))
-dribbling.append(Fuzzy.MFInput("Medium", [70, 73, 79, 85], [0, 1, 1, 0], dr))
-dribbling.append(Fuzzy.MFInput("High", [81, 85], [0, 1], dr))
+dribbling.append(Fuzzy.MFInput("Medium", [62, 73, 79, 85], [0, 1, 1, 0], dr))
+dribbling.append(Fuzzy.MFInput("High", [79, 85], [0, 1], dr))
 
 speed = []
 speed.append(Fuzzy.MFInput("Low", [62, 77], [1, 0], sp))
-speed.append(Fuzzy.MFInput("Medium", [72, 77, 84, 90], [0, 1, 1, 0], sp))
-speed.append(Fuzzy.MFInput("High", [86, 90], [0, 1], sp))
+speed.append(Fuzzy.MFInput("Medium", [62, 77, 84, 90], [0, 1, 1, 0], sp))
+speed.append(Fuzzy.MFInput("High", [84, 90], [0, 1], sp))
 
 finishing = []
 finishing.append(Fuzzy.MFInput("Low", [60, 72], [1, 0], fi))
-finishing.append(Fuzzy.MFInput("Medium", [67, 72, 78, 83], [0, 1, 1, 0], fi))
-finishing.append(Fuzzy.MFInput("High", [80, 83], [0, 1], fi))
+finishing.append(Fuzzy.MFInput("Medium", [60, 72, 78, 83], [0, 1, 1, 0], fi))
+finishing.append(Fuzzy.MFInput("High", [78, 83], [0, 1], fi))
 
 overall = []
 overall.append(Fuzzy.MFOutput("Beginner", [40, 54], [1, 0]))
-overall.append(Fuzzy.MFOutput("Amateur", [47, 54, 60, 66], [0, 1, 1, 0]))
-overall.append(Fuzzy.MFOutput("Semi-pro", [61, 66, 71, 76], [0, 1, 1, 0]))
+overall.append(Fuzzy.MFOutput("Amateur", [40, 54, 60, 66], [0, 1, 1, 0]))
+overall.append(Fuzzy.MFOutput("Semi-pro", [60, 66, 71, 76], [0, 1, 1, 0]))
 overall.append(Fuzzy.MFOutput("Professional", [71, 76, 83, 90], [0, 1, 1, 0]))
-overall.append(Fuzzy.MFOutput("World Class", [85, 90], [0, 1]))
+overall.append(Fuzzy.MFOutput("World Class", [83, 90], [0, 1]))
 
 rules = []
 
