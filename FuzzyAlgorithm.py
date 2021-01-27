@@ -99,18 +99,25 @@ class FuzzyAlgorithm:
         self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[2], self.finishing[1], goal, logic))
         self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[1], self.finishing[2], goal, logic))
 
-        # Amateur (3 medium, 1 low or 2 medium, 2 low)
+        # Amateur (3 medium, 1 low or 2 medium, 2 low or 3 low, 1 high)
         goal = self.overall[1]
         self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[1], self.finishing[0], goal, logic))
         self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[0], self.finishing[1], goal, logic))
         self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
         self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[1], self.finishing[1], goal, logic))
+
         self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[0], self.finishing[0], goal, logic))
         self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[1], self.finishing[0], goal, logic))
         self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[0], self.finishing[1], goal, logic))
         self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[1], self.finishing[0], goal, logic))
         self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[0], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
+
+        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ballControl[0], self.dribbling[2], self.speed[0], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ballControl[2], self.dribbling[0], self.speed[0], self.finishing[0], goal, logic))
+
 
         # Beginner (3 low, 1 medium or 4 low)
         goal = self.overall[0]
@@ -124,7 +131,7 @@ class FuzzyAlgorithm:
         numerator = 0
         denominator = 0
         for ovr in self.overall:
-            print(ovr.name, " ", ovr.mi)
+            #print(ovr.name, " ", ovr.mi)
             numerator += ovr.mi * ovr.value
             denominator += ovr.mi
 

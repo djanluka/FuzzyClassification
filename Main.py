@@ -16,11 +16,10 @@ bc = int(input("Ball control: "))
 dr = int(input("Dribbling: "))
 sp = int(input("Speed: "))
 fi = int(input("Finishing: "))
-alg = FuzzyAlgorithm.FuzzyAlgorithm(bc, dr, sp, fi)
+alg = FuzzyAlgorithm(bc, dr, sp, fi)
 solution = alg.solve()
 print(solution)
 '''
-
 
 x, y = Utils.read_data()
 y_pred = []
