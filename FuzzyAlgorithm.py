@@ -56,7 +56,7 @@ class FuzzyAlgorithm:
         self.rules.append(Fuzzy.Rule(self.ballControl[2], self.dribbling[2], self.speed[1], self.finishing[2], self.overall[4], Fuzzy.Logic.AND))
         self.rules.append(Fuzzy.Rule(self.ballControl[2], self.dribbling[2], self.speed[2], self.finishing[1], self.overall[4], Fuzzy.Logic.AND))
 
-        # Proffesional (2 high, 2 medium or 1 high, 3 medium or 2 high, 1 medium, 1 low)
+        # Professional (2 high, 2 medium or 1 high, 3 medium or 2 high, 1 medium, 1 low)
         self.rules.append(Fuzzy.Rule(self.ballControl[1], self.dribbling[1], self.speed[2], self.finishing[2], self.overall[3], Fuzzy.Logic.AND))
         self.rules.append(Fuzzy.Rule(self.ballControl[1], self.dribbling[2], self.speed[1], self.finishing[2], self.overall[3], Fuzzy.Logic.AND))
         self.rules.append(Fuzzy.Rule(self.ballControl[1], self.dribbling[2], self.speed[2], self.finishing[1], self.overall[3], Fuzzy.Logic.AND))

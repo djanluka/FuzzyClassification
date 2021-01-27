@@ -3,7 +3,7 @@ import sklearn.metrics as met
 from termcolor import colored
 
 def read_data():
-    df = pd.read_csv("SviNapadaciSaKlasama.csv")
+    df = pd.read_csv("Attackers.csv")
     print('Prvih 5 instanci iz skupa', df.head(), sep='\n')
     print()
 
@@ -57,5 +57,5 @@ def k_neighbours(clf, x_train, y_train, x_test, y_test, y_pred):
         print("\n")
 
 def get_features():
-    feature = ['Beginner', 'Amateur', 'Semi-pro', 'Proffesional', 'WorldClass']
+    feature = ['Beginner', 'Amateur', 'Semi-pro', 'Professional', 'WorldClass']
     return feature
