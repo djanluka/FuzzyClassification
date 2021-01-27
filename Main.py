@@ -5,10 +5,10 @@ import Utils
 import ClassificationAlgorithms as CA
 
 x, y = Utils.read_data()
-CA.DecisionTree(x, y)
-CA.DecisionTreeCV(x, y)
-CA.KNN(x, y)
-CA.NaiveBayes(x, y)
+CA.decision_tree(x, y)
+CA.decision_tree_cv(x, y)
+CA.knn(x, y)
+CA.naive_bayes(x, y)
 '''
 
 '''

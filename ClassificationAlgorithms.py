@@ -6,7 +6,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 
-def DecisionTree(x, y):
+
+def decision_tree(x, y):
     x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, stratify=y)
 
     dt = DecisionTreeClassifier()
@@ -24,7 +25,8 @@ def DecisionTree(x, y):
     # y_pred = dt.predict(test)
     # print(y_pred)
 
-def DecisionTreeCV(x, y):
+
+def decision_tree_cv(x, y):
     x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, stratify=y)
 
     parameters = [{'criterion': ['gini', 'entropy'],
@@ -57,7 +59,7 @@ def DecisionTreeCV(x, y):
         # print(y_pred)
 
 
-def KNN(x, y):
+def knn(x, y):
     features = x.columns
     x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.95, stratify=y)
 
@@ -81,7 +83,8 @@ def KNN(x, y):
     Utils.calculate_metrics('Test KNN', y_true, y_pred)
     Utils.k_neighbours(clf, x_train, y_train, x_test, y_test, y_pred)
 
-def NaiveBayes(x, y):
+
+def naive_bayes(x, y):
     features = x.columns
     x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.70, stratify=y)
 
@@ -107,4 +110,4 @@ def NaiveBayes(x, y):
     # test = df.loc[60:70, ]
     # test = test.drop(columns=['Name', 'Rating', 'Class'])
     # y_pred = clf_gnb.predict(test)
-    # print(y_pred)'
+    # print(y_pred)
