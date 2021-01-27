@@ -14,10 +14,10 @@ def DecisionTree(x, y):
     dt.fit(x_train, y_train)
 
     y_pred = dt.predict(x_train)
-    Utils.calculate_metrics('Training Decision Tree ', y_train, y_pred, dt.classes_)
+    Utils.calculate_metrics('Training Decision Tree ', y_train, y_pred)
 
     y_pred = dt.predict(x_test)
-    Utils.calculate_metrics('Test  Decision Tree ', y_test, y_pred, dt.classes_)
+    Utils.calculate_metrics('Test  Decision Tree ', y_test, y_pred)
 
     # test = df.loc[65:75, ]
     # test = cr.drop(columns=['Name', 'Rating', 'Class'])
@@ -46,10 +46,10 @@ def DecisionTreeCV(x, y):
         print()
 
         y_true, y_pred = y_train, clf.predict(x_train)
-        Utils.calculate_metrics('Training Decision Tree CV', y_true, y_pred, clf.classes_)
+        Utils.calculate_metrics('Training Decision Tree CV', y_true, y_pred)
 
         y_true, y_pred = y_test, clf.predict(x_test)
-        Utils.calculate_metrics('Test  Decision Tree CV', y_true, y_pred, clf.classes_)
+        Utils.calculate_metrics('Test  Decision Tree CV', y_true, y_pred)
 
         # test = df.loc[250:260, ]
         # test = test.drop(columns=['Name', 'Rating', 'Class'])
@@ -75,10 +75,10 @@ def KNN(x, y):
     print("Best parameters", clf.best_params_, sep="\n")
 
     y_true, y_pred = y_train, clf.predict(x_normalized_train)
-    Utils.calculate_metrics('Training KNN', y_true, y_pred, clf.classes_)
+    Utils.calculate_metrics('Training KNN', y_true, y_pred)
 
     y_true, y_pred = y_test, clf.predict(x_normalized_test)
-    Utils.calculate_metrics('Test KNN', y_true, y_pred, clf.classes_)
+    Utils.calculate_metrics('Test KNN', y_true, y_pred)
     Utils.k_neighbours(clf, x_train, y_train, x_test, y_test, y_pred)
 
 def NaiveBayes(x, y):
@@ -99,10 +99,10 @@ def NaiveBayes(x, y):
     print()
 
     y_true, y_pred = y_train, clf_gnb.predict(x_normalized_train)
-    Utils.calculate_metrics('Training Naive Bayes', y_true, y_pred, clf_gnb.classes_)
+    Utils.calculate_metrics('Training Naive Bayes', y_true, y_pred)
 
     y_true, y_pred = y_test, clf_gnb.predict(x_normalized_test)
-    Utils.calculate_metrics('Test Naive Bayes', y_true, y_pred, clf_gnb.classes_)
+    Utils.calculate_metrics('Test Naive Bayes', y_true, y_pred)
 
     # test = df.loc[60:70, ]
     # test = test.drop(columns=['Name', 'Rating', 'Class'])

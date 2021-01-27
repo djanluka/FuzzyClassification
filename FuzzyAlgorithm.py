@@ -117,7 +117,6 @@ class FuzzyAlgorithm:
     def solve(self):
         numerator = 0
         denominator = 0
-        print(np.argmax(self.overall))
         for ovr in self.overall:
             print(ovr.name, " ", ovr.mi)
             numerator += ovr.mi * ovr.value
@@ -125,6 +124,9 @@ class FuzzyAlgorithm:
 
         solution = numerator / denominator
         return solution
+
+    def get_predicted_class(self):
+        return np.argmax(self.overall) + 1
 
         
 

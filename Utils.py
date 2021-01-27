@@ -5,23 +5,24 @@ from termcolor import colored
 def read_data():
     df = pd.read_csv("SviNapadaciSaKlasama.csv")
     print('Prvih 5 instanci iz skupa', df.head(), sep='\n')
+    print()
 
     x = df.drop(columns=['Name', 'Rating', 'Class'])
     y = df['Class']
 
     return x, y
 
-def calculate_metrics(part, true_values, predicted_values, class_names):
-    print('Skup ', part)
+def calculate_metrics(part, true_values, predicted_values):
+    print(colored(part, "blue"))
     print('Matrica konfuzije')
     cnf_matrix = met.confusion_matrix(true_values, predicted_values)
-    df_cnf_matrix = pd.DataFrame(cnf_matrix, index=class_names, columns=class_names)
+    df_cnf_matrix = pd.DataFrame(cnf_matrix, index=get_features(), columns=get_features())
     print(df_cnf_matrix)
-    print('\n')
+    print()
 
     accuracy = met.accuracy_score(true_values, predicted_values)
-    print('Preciznost', accuracy)
-    print('\n')
+    print(colored(f'Preciznost: {accuracy}', "red"))
+    print()
 
     class_report = met.classification_report(true_values, predicted_values)
     print('Izvestaj klasifikacije', class_report, sep='\n')
@@ -54,3 +55,7 @@ def k_neighbours(clf, x_train, y_train, x_test, y_test, y_pred):
             print("distance: ", distances[i][j], "\n")
 
         print("\n")
+
+def get_features():
+    feature = ['Beginner', 'Amateur', 'Semi-pro', 'Proffesional', 'WorldClass']
+    return feature
