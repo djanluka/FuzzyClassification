@@ -5,7 +5,7 @@ from Fuzzy import MFInput, MFOutput, Rule, Logic
 class FuzzyAlgorithm:
 
     def __init__(self, bc, dr, sp, fi):
-        self.ballControl = []
+        self.ball_control = []
         self.set_ball_control(bc)
         self.dribbling = []
         self.set_dribbling(dr)
@@ -21,9 +21,9 @@ class FuzzyAlgorithm:
         self.set_rules()
 
     def set_ball_control(self, bc):
-        self.ballControl.append(MFInput("Low", [60, 72], [1, 0], bc))
-        self.ballControl.append(MFInput("Medium", [60, 72, 78, 84], [0, 1, 1, 0], bc))
-        self.ballControl.append(MFInput("High", [78, 84], [0, 1], bc))
+        self.ball_control.append(MFInput("Low", [60, 72], [1, 0], bc))
+        self.ball_control.append(MFInput("Medium", [60, 72, 78, 84], [0, 1, 1, 0], bc))
+        self.ball_control.append(MFInput("High", [78, 84], [0, 1], bc))
 
     def set_dribbling(self, dr):
         self.dribbling.append(MFInput("Low", [62, 73], [1, 0], dr))
@@ -50,82 +50,124 @@ class FuzzyAlgorithm:
     def set_rules(self):
         logic = Logic.AND
 
-        # World class (3 high, 1 medium or 4 high)
+        # World class
+        # 4 high
+        # 3 high, 1 medium
         goal = self.overall[4]
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[2], self.speed[2], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[2], self.speed[2], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[1], self.speed[2], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[2], self.speed[1], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[2], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[1], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[2], self.finishing[1], goal, logic))
 
-        # Professional (2 high, 2 medium or 1 high, 3 medium or 2 high, 1 medium, 1 low)
+        # Professional
+        # 1 low, 3 high
+        # 1 high, 3 medium
+        # 2 high, 2 medium
+        # 2 high, 1 medium, 1 low
         goal = self.overall[3]
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[2], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[2], self.speed[1], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[2], self.speed[2], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[1], self.speed[1], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[1], self.speed[2], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[2], self.speed[1], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[1], self.speed[1], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[2], self.speed[1], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[2], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[1], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[2], self.speed[1], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[1], self.speed[2], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[1], self.speed[0], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[2], self.speed[0], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[0], self.speed[2], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[0], self.speed[1], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[2], self.speed[1], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[2], self.speed[2], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[2], self.speed[0], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[2], self.speed[2], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[2], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[2], self.finishing[0], goal, logic))
 
-        # Semi-pro (1 high, 1 low, 2 medium or 4 medium)
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[1], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[1], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[1], self.finishing[2], goal, logic))
+
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[1], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[1], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[1], self.finishing[1], goal, logic))
+
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[1], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[1], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[2], self.finishing[2], goal, logic))
+
+        # Semi-pro
+        # 4 medium
+        # 2 low, 2 high
+        # 1 high, 1 low, 2 medium
         goal = self.overall[2]
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[1], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[1], self.speed[1], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[2], self.speed[1], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[2], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[1], self.speed[0], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[2], self.speed[0], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[0], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[2], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[1], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[2], self.speed[1], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[2], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[1], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[1], self.finishing[1], goal, logic))
 
-        # Amateur (3 medium, 1 low or 2 medium, 2 low or 3 low, 1 high)
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[2], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[2], self.speed[0], self.finishing[0], goal, logic))
+
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[1], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[1], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[1], self.finishing[2], goal, logic))
+
+        # Amateur
+        # 3 medium, 1 low
+        # 2 medium, 2 low
+        # 3 low, 1 high
+        # 2 low, 1 medium, 1 high
         goal = self.overall[1]
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[1], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[0], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[1], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[1], self.finishing[1], goal, logic))
 
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[1], self.speed[0], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[1], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[0], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[1], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[0], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[1], self.speed[0], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[1], self.finishing[1], goal, logic))
 
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[0], self.finishing[2], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[2], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[2], self.speed[0], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[2], self.dribbling[0], self.speed[0], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[0], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[0], self.finishing[0], goal, logic))
 
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[1], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[2], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[0], self.finishing[2], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[2], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[2], self.speed[0], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[0], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[2], self.dribbling[1], self.speed[0], self.finishing[0], goal, logic))
 
-        # Beginner (3 low, 1 medium or 4 low)
+        # Beginner
+        # 4 low
+        # 3 low, 1 medium
         goal = self.overall[0]
-        self.rules.append(Rule(self.ballControl[1], self.dribbling[0], self.speed[0], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[1], self.speed[0], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[1], self.finishing[0], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[0], self.finishing[1], goal, logic))
-        self.rules.append(Rule(self.ballControl[0], self.dribbling[0], self.speed[0], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[0], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[0], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[1], self.finishing[0], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[0], self.finishing[1], goal, logic))
+        self.rules.append(Rule(self.ball_control[0], self.dribbling[0], self.speed[0], self.finishing[0], goal, logic))
 
     def solve(self):
         numerator = 0
