@@ -22,7 +22,7 @@ class FuzzyAlgorithm:
 
     def set_ball_control(self, bc):
         self.ball_control.append(MFInput("Low", [56, 68], [1, 0], bc))
-        self.ball_control.append(MFInput("Medium", [54, 68, 74, 80], [0, 1, 1, 0], bc))
+        self.ball_control.append(MFInput("Medium", [56, 68, 74, 80], [0, 1, 1, 0], bc))
         self.ball_control.append(MFInput("High", [74, 80], [0, 1], bc))
 
     def set_dribbling(self, dr):
@@ -31,7 +31,7 @@ class FuzzyAlgorithm:
         self.dribbling.append(MFInput("High", [79, 85], [0, 1], dr))
 
     def set_speed(self, sp):
-        self.speed.append(MFInput("Low", [54, 71], [1, 0], sp))
+        self.speed.append(MFInput("Low", [56, 71], [1, 0], sp))
         self.speed.append(MFInput("Medium", [56, 71, 78, 84], [0, 1, 1, 0], sp))
         self.speed.append(MFInput("High", [78, 84], [0, 1], sp))
 
