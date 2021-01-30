@@ -96,7 +96,6 @@ class FuzzyAlgorithm:
         self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[2], self.finishing[2], goal, logic))
         self.rules.append(Rule(self.ball_control[1], self.dribbling[0], self.speed[2], self.finishing[2], goal, logic))
 
-
         # Semi-pro
         # 4 medium
         # 2 low, 2 high
@@ -124,7 +123,6 @@ class FuzzyAlgorithm:
         self.rules.append(Rule(self.ball_control[0], self.dribbling[2], self.speed[1], self.finishing[1], goal, logic))
         self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[2], self.finishing[1], goal, logic))
         self.rules.append(Rule(self.ball_control[0], self.dribbling[1], self.speed[1], self.finishing[2], goal, logic))
-
 
         # Amateur
         # 3 medium, 1 low
@@ -176,7 +174,6 @@ class FuzzyAlgorithm:
         numerator = 0
         denominator = 0
         for ovr in self.overall:
-            #print(ovr.name, " ", ovr.mi)
             numerator += ovr.mi * ovr.value
             denominator += ovr.mi
 
