@@ -4,7 +4,7 @@ from termcolor import colored
 
 
 def read_data():
-    df = pd.read_csv("Attackers.csv")
+    df = pd.read_csv('../data/Attackers.csv')
     print(df.head())
     print()
 
